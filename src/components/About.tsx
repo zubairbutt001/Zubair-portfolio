@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { User, MapPin, Navigation, Linkedin, Award, BookOpen } from "lucide-react";
+import { User, MapPin, Navigation, Linkedin, Award, BookOpen, Phone, Mail } from "lucide-react";
 import profileImg from "../assets/images/profile.jpg";
 
 interface AboutProps {
@@ -76,6 +76,7 @@ export default function About({ data }: AboutProps) {
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className="bg-[#111] border border-white/5 hover:border-white/20 hover:shadow-[0_0_35px_rgba(255,255,255,0.1)] transition-all duration-700 rounded-[2rem] p-8 lg:p-10 flex-1 relative overflow-hidden group"
+              style={{ willChange: 'transform, opacity, border-color' }}
             >
               <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none" />
             <h4 className="text-[9px] uppercase tracking-[0.3em] font-bold text-purple-400 mb-6 relative z-10">Professional Summary</h4>
@@ -99,46 +100,95 @@ export default function About({ data }: AboutProps) {
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
             className="bg-[#111] border border-white/5 hover:border-white/20 hover:shadow-[0_0_35px_rgba(255,255,255,0.1)] transition-all duration-700 rounded-[2rem] p-8 lg:p-10 flex-1 relative overflow-hidden group"
+            style={{ willChange: 'transform, opacity, border-color' }}
           >
               <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none" />
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-10 relative z-10">
-                <div className="flex items-center space-x-4">
-                  <div className="w-10 h-10 rounded-full bg-white/5 group-hover:bg-cyan-500/10 flex items-center justify-center border border-white/10 group-hover:border-cyan-500/20 transition-all duration-700 shrink-0">
-                    <User size={16} className="text-cyan-400 group-hover:scale-110 transition-transform duration-700" />
-                  </div>
+                {/* Phone */}
+                <div className="flex items-center space-x-4 group/item">
+                  <motion.div 
+                    whileHover={{ scale: 1.1, rotate: 10 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                    className="w-10 h-10 rounded-full bg-white/5 group-hover/item:bg-cyan-500/10 flex items-center justify-center border border-white/10 group-hover/item:border-cyan-500/20 transition-all duration-700 shrink-0"
+                  >
+                    <Phone size={16} className="text-cyan-400 group-hover/item:text-cyan-300 transition-colors" />
+                  </motion.div>
                   <div>
-                    <h5 className="text-[9px] uppercase tracking-widest font-bold text-zinc-500 mb-1 group-hover:text-cyan-500/70 transition-colors duration-700">Nationality</h5>
-                    <p className="text-sm font-bold text-white">Pakistani</p>
+                    <h5 className="text-[9px] uppercase tracking-widest font-bold text-zinc-500 mb-1 group-hover/item:text-cyan-500/70 transition-colors duration-700">Phone</h5>
+                    <p className="text-sm font-bold text-white">+971 56 600 1826</p>
                   </div>
                 </div>
 
-                <div className="flex items-center space-x-4">
-                  <div className="w-10 h-10 rounded-full bg-white/5 group-hover:bg-pink-500/10 flex items-center justify-center border border-white/10 group-hover:border-pink-500/20 transition-all duration-700 shrink-0">
-                    <MapPin size={16} className="text-pink-400 group-hover:scale-110 transition-transform duration-700" />
-                   </div>
+                {/* Email */}
+                <div className="flex items-center space-x-4 group/item">
+                  <motion.div 
+                    whileHover={{ scale: 1.1, y: -2 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                    className="w-10 h-10 rounded-full bg-white/5 group-hover/item:bg-purple-500/10 flex items-center justify-center border border-white/10 group-hover/item:border-purple-500/20 transition-all duration-700 shrink-0"
+                  >
+                    <Mail size={16} className="text-purple-400 group-hover/item:text-purple-300 transition-colors" />
+                  </motion.div>
                   <div>
-                    <h5 className="text-[9px] uppercase tracking-widest font-bold text-zinc-500 mb-1 group-hover:text-pink-500/70 transition-colors duration-700">Location</h5>
+                    <h5 className="text-[9px] uppercase tracking-widest font-bold text-zinc-500 mb-1 group-hover/item:text-purple-500/70 transition-colors duration-700">Email</h5>
+                    <p className="text-sm font-bold text-white">zbrbutt@yahoo.com</p>
+                  </div>
+                </div>
+
+                {/* LinkedIn */}
+                <div className="flex items-center space-x-4 group/item">
+                  <motion.div 
+                    whileHover={{ scale: 1.1, rotate: -10 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                    className="w-10 h-10 rounded-full bg-white/5 group-hover/item:bg-cyan-500/10 flex items-center justify-center border border-white/10 group-hover/item:border-cyan-500/20 transition-all duration-700 shrink-0"
+                  >
+                    <Linkedin size={16} className="text-cyan-400 group-hover/item:text-cyan-300 transition-colors" />
+                  </motion.div>
+                  <div>
+                    <h5 className="text-[9px] uppercase tracking-widest font-bold text-zinc-500 mb-1 group-hover/item:text-cyan-500/70 transition-colors duration-700">LinkedIn</h5>
+                    <a href="https://www.linkedin.com/in/zubair-ibrahim-746405155" target="_blank" rel="noreferrer" className="text-sm font-bold text-cyan-400 hover:text-cyan-300 transition-all duration-300 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] hover:underline underline-offset-4 decoration-cyan-400/50">View Profile</a>
+                  </div>
+                </div>
+
+                {/* Location */}
+                <div className="flex items-center space-x-4 group/item">
+                  <motion.div 
+                    whileHover={{ scale: 1.1, y: -2 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                    className="w-10 h-10 rounded-full bg-white/5 group-hover/item:bg-pink-500/10 flex items-center justify-center border border-white/10 group-hover/item:border-pink-500/20 transition-all duration-700 shrink-0"
+                  >
+                    <MapPin size={16} className="text-pink-400 group-hover/item:text-pink-300 transition-colors" />
+                  </motion.div>
+                  <div>
+                    <h5 className="text-[9px] uppercase tracking-widest font-bold text-zinc-500 mb-1 group-hover/item:text-pink-500/70 transition-colors duration-700">Location</h5>
                     <p className="text-sm font-bold text-white">Dubai, UAE</p>
                   </div>
                 </div>
 
-                <div className="flex items-center space-x-4">
-                  <div className="w-10 h-10 rounded-full bg-white/5 group-hover:bg-purple-500/10 flex items-center justify-center border border-white/10 group-hover:border-purple-500/20 transition-all duration-700 shrink-0">
-                    <Navigation size={16} className="text-purple-400 group-hover:scale-110 transition-transform duration-700" />
-                  </div>
+                {/* Nationality */}
+                <div className="flex items-center space-x-4 group/item">
+                  <motion.div 
+                    whileHover={{ scale: 1.1 }}
+                    className="w-10 h-10 rounded-full bg-white/5 group-hover/item:bg-zinc-500/10 flex items-center justify-center border border-white/10 group-hover/item:border-zinc-500/20 transition-all duration-700 shrink-0"
+                  >
+                    <User size={16} className="text-zinc-400 group-hover/item:text-white transition-colors" />
+                  </motion.div>
                   <div>
-                    <h5 className="text-[9px] uppercase tracking-widest font-bold text-zinc-500 mb-1 group-hover:text-purple-500/70 transition-colors duration-700">Driving License</h5>
-                    <p className="text-sm font-bold text-white">UAE Valid</p>
+                    <h5 className="text-[9px] uppercase tracking-widest font-bold text-zinc-500 mb-1 group-hover/item:text-zinc-400 transition-colors duration-700">Nationality</h5>
+                    <p className="text-sm font-bold text-white">Pakistani</p>
                   </div>
                 </div>
 
-                <div className="flex items-center space-x-4">
-                  <div className="w-10 h-10 rounded-full bg-white/5 group-hover:bg-cyan-500/10 flex items-center justify-center border border-white/10 group-hover:border-cyan-500/20 transition-all duration-700 shrink-0">
-                    <Linkedin size={16} className="text-cyan-400 group-hover:scale-110 transition-transform duration-700" />
-                   </div>
+                {/* License */}
+                <div className="flex items-center space-x-4 group/item">
+                  <motion.div 
+                    whileHover={{ scale: 1.1, rotate: 45 }}
+                    className="w-10 h-10 rounded-full bg-white/5 group-hover/item:bg-purple-500/10 flex items-center justify-center border border-white/10 group-hover/item:border-purple-500/20 transition-all duration-700 shrink-0"
+                  >
+                    <Navigation size={16} className="text-purple-400 group-hover/item:text-purple-300 transition-colors" />
+                  </motion.div>
                   <div>
-                    <h5 className="text-[9px] uppercase tracking-widest font-bold text-zinc-500 mb-1 group-hover:text-cyan-500/70 transition-colors duration-700">LinkedIn</h5>
-                    <a href="https://www.linkedin.com/in/zubair-ibrahim-746405155" target="_blank" rel="noreferrer" className="text-sm font-bold text-cyan-400 hover:text-cyan-300 transition-all duration-300 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] hover:underline underline-offset-4 decoration-cyan-400/50">View Profile</a>
+                    <h5 className="text-[9px] uppercase tracking-widest font-bold text-zinc-500 mb-1 group-hover/item:text-purple-500/70 transition-colors duration-700">Driving License</h5>
+                    <p className="text-sm font-bold text-white">UAE Valid</p>
                   </div>
                 </div>
               </div>

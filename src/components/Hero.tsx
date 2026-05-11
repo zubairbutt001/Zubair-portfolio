@@ -8,16 +8,6 @@ export default function Hero() {
   const [index, setIndex] = useState(0);
   const titles = ["HR Executive", "Public Relations Officer", "Operations Manager"];
 
-  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    const targetId = href.replace("#", "");
-    const elem = document.getElementById(targetId);
-    window.scrollTo({
-      top: elem?.offsetTop ? elem.offsetTop - 80 : 0,
-      behavior: "smooth",
-    });
-  };
-
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prevIndex) => (prevIndex + 1) % titles.length);
@@ -55,12 +45,11 @@ export default function Hero() {
                     exit={{ y: -20, opacity: 0 }}
                     transition={{ duration: 0.4 }}
                     className="text-xl md:text-2xl text-cyan-400/80 font-mono uppercase tracking-widest"
+                    style={{ willChange: 'transform, opacity' }}
                   >
                     {titles[index]}
                   </motion.h2>
                 </AnimatePresence>
-                <div className="w-[1px] h-6 bg-white/10" />
-                <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">v3.1.0</span>
               </div>
               
               <p className="text-zinc-400 text-sm md:text-base max-w-lg leading-relaxed mb-10">
@@ -70,7 +59,6 @@ export default function Hero() {
               <div className="flex flex-wrap gap-4 mb-12">
                 <motion.a 
                   href="#experience"
-                  onClick={(e) => handleSmoothScroll(e, "#experience")}
                   whileHover={{ scale: 1.02, backgroundColor: "rgba(255, 255, 255, 0.05)", borderColor: "rgba(34, 211, 238, 0.4)" }}
                   whileTap={{ scale: 0.98 }}
                   transition={{ duration: 0.3, ease: "easeOut" }}
@@ -81,7 +69,6 @@ export default function Hero() {
                 </motion.a>
                 <motion.a 
                   href="#contact"
-                  onClick={(e) => handleSmoothScroll(e, "#contact")}
                   whileHover={{ scale: 1.02, backgroundColor: "rgba(255, 255, 255, 0.05)", borderColor: "rgba(255, 255, 255, 0.2)" }}
                   whileTap={{ scale: 0.98 }}
                   transition={{ duration: 0.3, ease: "easeOut" }}
@@ -117,15 +104,18 @@ export default function Hero() {
               transition={{ duration: 1, delay: 0.2 }}
               whileHover={{ scale: 1.05 }}
               className="relative w-[400px] h-[400px] group cursor-pointer"
+              style={{ willChange: 'transform, opacity' }}
             >
               {/* Concentric Rings */}
               <motion.div 
                 className="absolute inset-0 rounded-full border border-cyan-500/20 scale-[1.15] opacity-50 group-hover:opacity-100 group-hover:border-cyan-500/40"
                 transition={{ duration: 0.5 }}
+                style={{ willChange: 'opacity, border-color' }}
               />
               <motion.div 
                 className="absolute inset-0 rounded-full border border-purple-500/20 scale-[1.05] opacity-50 group-hover:opacity-100 group-hover:border-purple-500/40"
                 transition={{ duration: 0.5, delay: 0.1 }}
+                style={{ willChange: 'opacity, border-color' }}
               />
               <motion.div 
                 className="absolute inset-0 rounded-full border border-white/5 scale-[0.95] group-hover:border-white/20"
@@ -191,7 +181,6 @@ export default function Hero() {
               <motion.a 
                 key={card.id}
                 href={card.href}
-                onClick={(e) => handleSmoothScroll(e, card.href)}
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 + i * 0.1, ease: [0.21, 0.47, 0.32, 0.98] }}
@@ -199,7 +188,8 @@ export default function Hero() {
                 whileTap={{ scale: 0.98 }}
                 className="bg-[#0a0a0a] border border-white/5 rounded-2xl p-6 group hover:border-white/30 transition-all duration-500 relative overflow-hidden hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]"
                 style={{
-                  boxShadow: '0 4px 20px rgba(0,0,0,0.5)'
+                  boxShadow: '0 4px 20px rgba(0,0,0,0.5)',
+                  willChange: 'transform, opacity, border-color'
                 }}
               >
                 {/* Subtle gradient overlay on hover */}

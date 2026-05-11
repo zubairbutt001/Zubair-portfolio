@@ -13,9 +13,32 @@
 
 @layer base {
   body {
-    background-color: #050505;
+    background-color: #060606;
     color: #F8FAFC;
     scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Reduce motion for users who prefer it */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* Hardware acceleration for common targets */
+  .fixed, .sticky {
+    transform: translateZ(0);
+  }
+
+  /* Optimized scrolling on iOS */
+  * {
+    -webkit-overflow-scrolling: touch;
   }
 }
 

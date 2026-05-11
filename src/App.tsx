@@ -1,3 +1,4 @@
+import React, { useEffect } from "react";
 import { motion, useScroll, useSpring } from "motion/react";
 import { PORTFOLIO_DATA } from "./data/portfolio";
 import Navbar from "./components/Navbar";
@@ -17,6 +18,32 @@ export default function App() {
     damping: 30,
     restDelta: 0.001
   });
+
+  useEffect(() => {
+    const handleAnchorClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      const anchor = target.closest("a");
+      
+      if (anchor && anchor.hash && anchor.hash.startsWith("#") && anchor.origin === window.location.origin) {
+        e.preventDefault();
+        const targetId = anchor.hash.replace("#", "");
+        const elem = document.getElementById(targetId);
+        
+        if (elem) {
+          window.scrollTo({
+            top: elem.offsetTop - 80,
+            behavior: "smooth",
+          });
+          
+          // Update URL without jump if desired, or just leave it
+          window.history.pushState(null, "", anchor.hash);
+        }
+      }
+    };
+
+    window.addEventListener("click", handleAnchorClick);
+    return () => window.removeEventListener("click", handleAnchorClick);
+  }, []);
 
   return (
     <div className="min-h-screen font-sans selection:bg-brand-accent selection:text-luxury-black relative bg-[#050505] selection:text-white">

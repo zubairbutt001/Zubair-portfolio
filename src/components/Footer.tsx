@@ -15,7 +15,6 @@ export default function Footer({ name, linkedin }: FooterProps) {
               <span key={i} className={i === 1 ? "text-white/20 italic ml-2" : ""}>{n}</span>
             ))}
           </div>
-          <p className="text-zinc-600 text-xs uppercase tracking-[0.3em] font-bold">made by zubair</p>
         </div>
 
         <div className="flex gap-12 text-zinc-500">

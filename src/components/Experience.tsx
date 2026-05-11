@@ -40,6 +40,7 @@ export default function Experience({ data }: ExperienceProps) {
               whileHover={{ y: -5 }}
               transition={{ duration: 0.5, ease: "easeOut" }}
               className="bg-[#111] border border-white/5 rounded-3xl p-10 lg:p-14 relative group overflow-hidden transition-all duration-500 hover:border-cyan-500/30 hover:shadow-[0_0_40px_rgba(34,211,238,0.15)]"
+              style={{ willChange: 'transform, opacity, border-color' }}
             >
               <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none" />
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 relative z-10">
